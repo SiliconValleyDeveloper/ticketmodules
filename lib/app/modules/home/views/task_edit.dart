@@ -5,8 +5,9 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class TaskEditPage extends StatefulWidget {
   TaskModel? task;
+  late CommentModel? commentModel;
 
-  TaskEditPage({Key? key, this.task}) : super(key: key);
+  TaskEditPage({Key? key, this.task, this.commentModel}) : super(key: key);
 
   @override
   _TaskEditPageState createState() => _TaskEditPageState();
@@ -239,28 +240,113 @@ class _TaskEditPageState extends State<TaskEditPage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.chat,
-                              size: 32,
-                              color: Colors.grey[300],
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "Leave the first comment",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                            ),
-                          ],
-                        ),
-                      )
+                      // SizedBox(
+                      //   width: double.infinity,
+                      //   child: Column(
+                      //     crossAxisAlignment: CrossAxisAlignment.center,
+                      //     children: [
+                      //       Icon(
+                      //         Icons.chat,
+                      //         size: 32,
+                      //         color: Colors.grey[300],
+                      //       ),
+                      //       SizedBox(
+                      //         height: 8,
+                      //       ),
+                      //       Text(
+                      //         "Leave the first comment",
+                      //         style: TextStyle(
+                      //             fontWeight: FontWeight.bold,
+                      //             color: Colors.grey),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
+
+                      // SizedBox(
+                      //   height: 10,
+                      // ),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: commentModelItem.length,
+                          itemBuilder: ((context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.fromLTRB(4, 4, 8, 4),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CircleAvatar(
+                                    radius: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'User Name :)',
+                                              style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w700),
+                                            ),
+                                            Row(
+                                              children: [
+                                                Icon(
+                                                  size: 14,
+                                                  Icons.thumb_up,
+                                                  color: Colors.blue,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(commentModelItem[index]
+                                                    .like
+                                                    .toString()),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Icon(
+                                                  size: 14,
+                                                  Icons.heart_broken,
+                                                  color: Colors.red,
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+                                                Text(commentModelItem[index]
+                                                    .heart
+                                                    .toString())
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              2, 0, 0, 0),
+                                          child: Text(
+                                            commentModelItem[index]
+                                                .comment
+                                                .toString(),
+                                            style: TextStyle(fontSize: 14),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }))
                     ],
                   ),
                 ),

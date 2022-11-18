@@ -39,7 +39,7 @@ class _TmaHomePageState extends State<TmaHomePage> {
                             style: TextStyle(fontSize: 16),
                           ),
                           Text(
-                            " Dreamwalker",
+                            " Alenia",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 16),
                           )
@@ -65,7 +65,7 @@ class _TmaHomePageState extends State<TmaHomePage> {
                         ),
                       ),
                       SizedBox(
-                        height: 240,
+                        height: 260,
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemCount: taskItems.length,

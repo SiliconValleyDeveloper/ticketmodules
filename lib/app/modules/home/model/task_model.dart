@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class TaskModel {
@@ -66,4 +67,36 @@ List<TaskModel> taskItems = [
       endDate: "June 20",
       commentCount: 8,
       datetime: DateTime.now().subtract(Duration(days: 2))),
+];
+
+class CommentModel {
+  String? comment;
+  int? like;
+  int? heart;
+  DateTime? dateTime;
+
+  CommentModel({
+    this.comment,
+    this.like,
+    this.heart,
+    this.dateTime,
+  });
+}
+
+List<CommentModel> commentModelItem = [
+  CommentModel(
+      comment: 'Add Date Time',
+      like: 3,
+      heart: 8,
+      dateTime: DateTime.now().subtract(Duration(days: 2))),
+  CommentModel(
+      comment: 'Add Like Feature',
+      like: 3,
+      heart: 1,
+      dateTime: DateTime.now().subtract(Duration(days: 35))),
+  CommentModel(
+      comment: 'Add Comment Time',
+      like: 3,
+      heart: 8,
+      dateTime: DateTime.now().subtract(Duration(days: 8)))
 ];
